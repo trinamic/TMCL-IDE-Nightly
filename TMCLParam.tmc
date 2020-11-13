@@ -1,0 +1,87 @@
+//**********************************************************
+// This is an include file for TMCL that defines symbolic
+// names for all important parameters.
+// This will make TMCL programs look more clear, as it is
+// then possible to use symbolic names instead of parameter
+// numbers.
+// It is for example better to say
+//   SAP APMaxPositioningSpeed, Motor2, 1000
+// instead of
+//   SAP 4, 2, 1000
+//
+// This file can be included into any TMCL program just by
+// writing #include TMCLParam.tmc.
+//***********************************************************
+
+
+//Definitions of axis numbers
+
+Motor0 = 0
+Motor1 = 1
+Motor2 = 2
+Motor3 = 3
+Motor4 = 4
+Motor5 = 5
+
+
+//Definitions of axis paramters
+
+APNextPosition = 0             //Target position
+APActualPosition = 1           //Actual position
+APNextVelocity = 2             //Desired speed in velocity mode, automatically set in position mode
+APActualVelocity = 3           //Get current rotation speed
+APMaxPositioningSpeed = 4      //Maximum speed in position mode
+APMaxAcceleration = 5          //Maximum acceleration/deceleration
+APMaxCurrent = 6               //Motor current (0..1500 for 1500mA modules; 0..255 for all modules with higher current 255=100%)
+APStandbyCurrent = 7           //Motor standby current
+APTargetPosReached = 8         //Is set to 1, if actual position equals target position
+APRefSwitchStatus = 9          //Logical state of the reference (left) switch
+APRightLimitSwitchStatus = 10  //Logical state of the (right) limit switch
+APLeftLimitSwitchStatus = 11   //Logical state of the left limit switch (in three switch mode)
+APRightLimitSwitchDisable = 12 //Deactivates stop function of the right switch, if set to 1
+APLeftLimitSwitchDisable = 13  //Deactivates the stop function of the left switch resp. reference switch, if set to 1
+
+
+//Definitions of advanced axis parameters for TMCM-3xx/110/61x modules
+
+APActualAcceleration = 135     //Actual acceleration (Read only)
+APRampMode = 138               //Ramp mode
+APMicrostepResolution = 140    //Microstep resolution
+APRefSwitchTolerance = 141
+APSnapshotPosition = 142       //Captures exact position of reference switch, set dummy value first to prepare caption
+APSoftStopFlag = 149           //Motor stops immediately (disregarding motor limit), when the reference or limit switch is hit, if set to 0
+APPositionLatchFlag = 151      //Indicates that a position snapshot has been completed
+APRampDivisor = 153            //The exponent of the scaling factor for the ramp generator (0...13)
+APPulseDivisor = 154           //The exponent of the scaling factor for the pulse (step) generator (0...13)
+APRefSearchMode = 193          //Specifies number of switches for reference search
+APRefSearchSpeed = 194         //Reference search speed as a fraction of the maximum velocity
+APRefSwitchSpeed = 195         //Switching point speed as a fraction of the maximum velocity
+APMixedDecay = 203             //Mixed decay theshold level (-1=continuously on, 1..2047= velocity threshold, 2048=off)
+APFreeWheeling = 204           //Time after which the power to the motor will be cut when its velocity has reached zero
+APStallguardThresholdLevel = 205//Stallguard threshold level
+APActualStallguardValue = 206  //Actual Stallguard level (read only)
+APDriverErrorFlags = 208       //Driver error flags (read only)
+APEncoderPosition = 209        //Actual position of encoder (TMCM-323/611/101/102/109)
+APEncoderPredivAndFlags = 210  //Encoder pre-divider and special function flags (TMCM-323/611/101/102)
+APFullStepThreshold = 211      //When exceeding this speed the driver will switch to real fullstep mode (0=off)
+APMaxEncoderDeviation = 212    //Maximum deviation between motor and encoder (TMCM-611 only)
+APGroupIndex = 213             //Motor group index (TMCM-610/611/612)
+
+//Definitions of some special axis parameter values
+APVRefSearchOneSwitch = 1      //One reference switch   (use with APRefSearchMode)
+APVRefSearchTwoSwitches = 2    //Two reference switches (use with APRefSearchMode)
+
+APVMixedDecayPermanent = -1    //Mixed decay is permantly on (use with APMixedDecay)
+APVMixedDecayOff = 2048        //Mixed decay is disabled     (use with APMixedDecay)
+
+APVRampModePosition = 0        //Positioning mode (use with APRampMode)
+APVRampModeVelocity = 2        //Velocity mode    (use with APRampMode)
+
+//Encoder special function flags: use with TMCM-323 or TMCM-611 (APEncoderPredivAndFlags)
+APVEncoderAddOnCCW = 1           //Add when rotating CCW (default: add when rotating CW)
+APVEncoderAlwaysTriggerNull = 2  //Always trigger null channel (default: only once)
+APVEncoderClearEncoderOnNull = 4 //Clear encoder on next null channel event (default: do not clear)
+APVEncoderHoldValueOnNull = 8    //Hold encoder value only on next null event (default: always hold encoder value)
+APVEncoderNullActiveHigh = 16    //Null channel is active high (default: active low)
+
+
